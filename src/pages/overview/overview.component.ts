@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { BookKeeperService } from '../../services/book-keeper/book-keeper.service';
 import {
     FormControl,
@@ -10,7 +10,6 @@ import { provideUrlValidator } from '../../validators/url.validator';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { Router } from '@angular/router';
 import { BookmarkComponent } from '../../components/bookmark/bookmark.component';
-import { Bookmark } from '../../models/bookmark.model';
 
 @Component({
     selector: 'app-overview',
@@ -19,7 +18,7 @@ import { Bookmark } from '../../models/bookmark.model';
     templateUrl: './overview.component.html',
     styleUrl: './overview.component.scss',
 })
-export class OverviewComponent implements OnInit {
+export class OverviewComponent {
     private bookKeeper = inject(BookKeeperService);
     private router = inject(Router);
 
@@ -30,14 +29,12 @@ export class OverviewComponent implements OnInit {
     public PAGE_SIZE = 20 as const;
 
     public bookmarks = this.bookKeeper.currentBookmarks();
-    public visibleBookmarks: Bookmark[] = [];
-
-    ngOnInit() {
-        this.visibleBookmarks = this.bookmarks().slice(
+    public visibleBookmarks = computed(() => {
+        return this.bookmarks().slice(
             (this.page() - 1) * this.PAGE_SIZE,
             this.page() * this.PAGE_SIZE,
         );
-    }
+    });
 
     public form = new FormGroup({
         url: new FormControl<string>('', {
@@ -57,9 +54,5 @@ export class OverviewComponent implements OnInit {
 
     public pageChanged(value: number) {
         this.router.navigate(['overview', value]);
-    }
-
-    public visibleBookmarksChanged(bookmarks: Bookmark[]) {
-        this.visibleBookmarks = bookmarks;
     }
 }

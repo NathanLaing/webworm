@@ -9,24 +9,18 @@ import { BookmarkComponent } from '../bookmark/bookmark.component';
     styleUrl: './pagination.component.scss',
 })
 export class PaginationComponent {
-    public items = input.required<any[]>();
-    public page = input.required<number>();
-    public pageSize = input.required<number>();
+    public totalItems = input.required<number>();
+    public pageNumber = input.required<number>();
+    public itemsPerPage = input.required<number>();
 
     public pageChanged = output<number>();
     public visibleItems = output<any[]>();
 
     public lastPage = computed(() => {
-        return Math.ceil(this.items().length / this.pageSize());
+        return Math.ceil(this.totalItems() / this.itemsPerPage());
     });
 
     public changePage(page: number) {
         this.pageChanged.emit(page);
-        this.visibleItems.emit(
-            this.items().slice(
-                (page - 1) * this.pageSize(),
-                page * this.pageSize(),
-            ),
-        );
     }
 }

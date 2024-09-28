@@ -33,15 +33,14 @@
         </div>
     </form>
     <div class="overview__list">
-        @for (bookmark of visibleBookmarks; track bookmark.id) {
+        @for (bookmark of visibleBookmarks(); track bookmark.id) {
             <app-bookmark [bookmark]="bookmark"></app-bookmark>
         }
     </div>
     <app-pagination
-        [items]="bookmarks()"
-        [page]="page()"
-        [pageSize]="PAGE_SIZE"
+        [totalItems]="bookmarks().length"
+        [pageNumber]="page()"
+        [itemsPerPage]="PAGE_SIZE"
         (pageChanged)="pageChanged($event)"
-        (visibleItems)="visibleBookmarksChanged($event)"
     ></app-pagination>
 </div>
