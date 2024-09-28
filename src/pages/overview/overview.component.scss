@@ -1,0 +1,41 @@
+input:invalid {
+    border: 2px solid red;
+}
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 10px;
+
+    &__bookmark-label {
+        text-align: center;
+    }
+
+    &__add-bookmark {
+        margin-left: 6px;
+    }
+
+    &__form-errors {
+        height: 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__form-error {
+        font-size: 0.8em;
+        color: red;
+    }
+
+    &__list {
+        width: 100%;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        place-items: center;
+    }
+}
