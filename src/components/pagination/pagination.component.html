@@ -1,58 +1,19 @@
 <nav class="pagination">
-    @let nextPage = pageNumber() + 1;
-    @let nextNextPage = nextPage + 1;
-
-    @let previousPage = pageNumber() - 1;
-    @let previousPreviousPage = previousPage - 1;
     @if (pageNumber() !== 1) {
-        <button (click)="changePage(previousPage)">&laquo;</button>
+        <button (click)="changePage(pageNumber() - 1)">&laquo;</button>
     }
 
-    @if (pageNumber() === 1) {
-        <button class="pagination--active">
-            {{ pageNumber() }}
+    @for (page of pageLinks(); track page) {
+        <button
+            class="{{ page === pageNumber() ? 'pagination--active' : '' }}"
+            (click)="changePage(page)"
+            [disabled]="page === pageNumber()"
+        >
+            {{ page }}
         </button>
-        @if (nextPage <= lastPage()) {
-            <button (click)="changePage(nextPage)">
-                {{ nextPage }}
-            </button>
-        }
-        @if (nextNextPage <= lastPage()) {
-            <button (click)="changePage(nextNextPage)">
-                {{ nextNextPage }}
-            </button>
-        }
-    } @else if (pageNumber() === lastPage()) {
-        @if (previousPreviousPage >= 1) {
-            <button (click)="changePage(previousPreviousPage)">
-                {{ previousPreviousPage }}
-            </button>
-        }
-        @if (previousPage >= 1) {
-            <button (click)="changePage(previousPage)">
-                {{ previousPage }}
-            </button>
-        }
-        <button class="pagination--active">
-            {{ pageNumber() }}
-        </button>
-    } @else {
-        @if (previousPage >= 1) {
-            <button (click)="changePage(previousPage)">
-                {{ previousPage }}
-            </button>
-        }
-        <button class="pagination--active">
-            {{ pageNumber() }}
-        </button>
-        @if (nextPage <= lastPage()) {
-            <button (click)="changePage(nextPage)">
-                {{ nextPage }}
-            </button>
-        }
     }
 
     @if (pageNumber() < lastPage()) {
-        <button (click)="changePage(nextPage)">&raquo;</button>
+        <button (click)="changePage(pageNumber() + 1)">&raquo;</button>
     }
 </nav>

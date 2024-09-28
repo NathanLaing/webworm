@@ -14,10 +14,30 @@ export class PaginationComponent {
     public itemsPerPage = input.required<number>();
 
     public pageChanged = output<number>();
-    public visibleItems = output<any[]>();
 
     public lastPage = computed(() => {
         return Math.ceil(this.totalItems() / this.itemsPerPage());
+    });
+
+    public pageLinks = computed(() => {
+        const nextPage = this.pageNumber() + 1;
+        const prevPage = this.pageNumber() - 1;
+
+        const notOnFirstPage = this.pageNumber() > 1;
+        const notOnLastPage = this.pageNumber() < this.lastPage();
+
+        if (notOnFirstPage && notOnLastPage) {
+            return [prevPage, this.pageNumber(), nextPage];
+        }
+
+        if (notOnFirstPage) {
+            return [prevPage, this.pageNumber()];
+        }
+        if (notOnLastPage) {
+            return [this.pageNumber(), nextPage];
+        }
+
+        return [this.pageNumber()];
     });
 
     public changePage(page: number) {
