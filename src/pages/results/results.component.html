@@ -1,0 +1,10 @@
+<div class="results">
+    <h2>Stanley has taken care of your bookmark!</h2>
+    <p>It should be in the list on the overview page</p>
+    <nav>
+        <button (click)="overviewClicked()">Back</button>
+    </nav>
+    <p>
+        You added: <a href="{{ bookmark()?.url }}}">{{ bookmark()?.url }}</a>
+    </p>
+</div>
