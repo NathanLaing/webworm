@@ -19,6 +19,7 @@ export function provideUrlValidator(): ValidatorFn {
          *
          * Probably there is a way but from what I saw online they all looked very hacky
          * And lots only worked for same origin URLs
+         * Making a call to other origins is blocked by CORS
          */
         const response = { status: 200 };
         if (response.status === 404) {

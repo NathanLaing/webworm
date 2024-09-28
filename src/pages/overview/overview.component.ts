@@ -43,7 +43,6 @@ export class OverviewComponent implements OnInit {
         url: new FormControl<string>('', {
             nonNullable: true,
             validators: [Validators.required, provideUrlValidator()],
-            updateOn: 'blur',
         }),
     });
 

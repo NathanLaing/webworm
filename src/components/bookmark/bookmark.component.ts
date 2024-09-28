@@ -25,7 +25,6 @@ export class BookmarkComponent implements OnInit {
         url: new FormControl<string>('', {
             nonNullable: true,
             validators: [Validators.required, provideUrlValidator()],
-            updateOn: 'blur',
         }),
     });
 
@@ -36,7 +35,6 @@ export class BookmarkComponent implements OnInit {
             url: new FormControl<string>(this.bookmark().url, {
                 nonNullable: true,
                 validators: [Validators.required, provideUrlValidator()],
-                updateOn: 'blur',
             }),
         });
     }
