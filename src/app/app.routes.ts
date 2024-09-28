@@ -4,15 +4,6 @@ import { ResultsComponent } from '../pages/results/results.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        redirectTo: 'overview/1',
-        pathMatch: 'full',
-    },
-    {
-        path: 'overview',
-        redirectTo: 'overview/1',
-    },
-    {
         path: 'overview/:page',
         component: OverviewComponent,
     },
