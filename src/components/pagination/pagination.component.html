@@ -1,0 +1,58 @@
+<nav class="pagination">
+    @let nextPage = page() + 1;
+    @let nextNextPage = nextPage + 1;
+
+    @let previousPage = page() - 1;
+    @let previousPreviousPage = previousPage - 1;
+    @if (page() !== 1) {
+        <button (click)="changePage(previousPage)">&laquo;</button>
+    }
+
+    @if (page() === 1) {
+        <button class="pagination--active">
+            {{ page() }}
+        </button>
+        @if (nextPage <= lastPage()) {
+            <button (click)="changePage(nextPage)">
+                {{ nextPage }}
+            </button>
+        }
+        @if (nextNextPage <= lastPage()) {
+            <button (click)="changePage(nextNextPage)">
+                {{ nextNextPage }}
+            </button>
+        }
+    } @else if (page() === lastPage()) {
+        @if (previousPreviousPage >= 1) {
+            <button (click)="changePage(previousPreviousPage)">
+                {{ previousPreviousPage }}
+            </button>
+        }
+        @if (previousPage >= 1) {
+            <button (click)="changePage(previousPage)">
+                {{ previousPage }}
+            </button>
+        }
+        <button class="pagination--active">
+            {{ page() }}
+        </button>
+    } @else {
+        @if (previousPage >= 1) {
+            <button (click)="changePage(previousPage)">
+                {{ previousPage }}
+            </button>
+        }
+        <button class="pagination--active">
+            {{ page() }}
+        </button>
+        @if (nextPage <= lastPage()) {
+            <button (click)="changePage(nextPage)">
+                {{ nextPage }}
+            </button>
+        }
+    }
+
+    @if (page() < lastPage()) {
+        <button (click)="changePage(nextPage)">&raquo;</button>
+    }
+</nav>
