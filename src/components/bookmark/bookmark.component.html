@@ -7,9 +7,7 @@
             (ngSubmit)="onSubmit()"
         >
             <input
-                class="{{
-                    isFormValid() ? 'valid' : 'invalid'
-                }} bookmark__input"
+                class="{{ isFormValid() ? 'valid' : 'invalid' }}"
                 type="url"
                 name="url"
                 formControlName="url"
