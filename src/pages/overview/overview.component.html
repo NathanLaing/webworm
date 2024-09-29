@@ -1,7 +1,7 @@
 <div class="overview">
   <form id="bookmarkForm" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label>
-      <p class="overview__bookmark-label">Give Stanley a bookmark</p>
+      <p class="add-bookmark-label">Give Stanley a bookmark</p>
       <input
         type="url"
         formControlName="url"
@@ -11,26 +11,26 @@
     </label>
 
     <button
-      class="overview__add-bookmark"
+      class="add-bookmark-button"
       type="submit"
       form="bookmarkForm"
       [disabled]="form.invalid"
     >
       Add
     </button>
-    <div class="overview__form-errors">
+    <div class="form-errors-container">
       @if (form.invalid && (form.dirty || !form.untouched)) {
         @if (form.controls.url.errors?.['invalidUrl']) {
-          <p class="overview__form-error">Please enter a valid URL</p>
+          <p class="form-error">Please enter a valid URL</p>
         }
 
         @if (form.controls.url.errors?.['nonExistentUrl']) {
-          <p class="overview__form-error">Please enter a URL which exists</p>
+          <p class="form-error">Please enter a URL which exists</p>
         }
       }
     </div>
   </form>
-  <div class="overview__list">
+  <div class="bookmark-list">
     @for (bookmark of visibleBookmarks(); track bookmark.id) {
       <app-bookmark [bookmark]="bookmark"></app-bookmark>
     }

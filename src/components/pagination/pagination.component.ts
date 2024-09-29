@@ -6,7 +6,7 @@ import { BookmarkComponent } from '../bookmark/bookmark.component';
   standalone: true,
   imports: [BookmarkComponent],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.scss',
+  styleUrl: './pagination.component.css',
 })
 export class PaginationComponent {
   public totalItems = input.required<number>();

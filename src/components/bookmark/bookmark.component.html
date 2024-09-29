@@ -1,7 +1,7 @@
-<div class="bookmark">
+<div class="bookmark-container">
   @if (editing) {
     <form
-      class="bookmark__form"
+      class="edit-form"
       id="editBookmarkForm"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
@@ -18,9 +18,9 @@
       </button>
     </form>
   } @else {
-    <div class="bookmark__item">
+    <div class="bookmark-item">
       <a [href]="bookmark().url">{{ bookmark().url }}</a>
-      <span class="bookmark__buttons">
+      <span class="bookmark-button-container">
         <button (click)="editBookmark()">
           <i class="fa-regular fa-pen-to-square"></i>
         </button>

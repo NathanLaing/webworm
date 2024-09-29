@@ -14,7 +14,7 @@ import { provideUrlValidator } from '../../validators/url.validator';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './bookmark.component.html',
-  styleUrl: './bookmark.component.scss',
+  styleUrl: './bookmark.component.css',
 })
 export class BookmarkComponent implements OnInit {
   private bookKeeper = inject(BookKeeperService);

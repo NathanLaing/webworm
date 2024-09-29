@@ -1,0 +1,18 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pagination-control {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.active-page {
+  background-color: mediumpurple;
+  color: white;
+}

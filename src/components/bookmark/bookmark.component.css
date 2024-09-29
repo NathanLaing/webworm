@@ -1,0 +1,29 @@
+.bookmark-container {
+  width: 250px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid darkgray;
+  background-color: lavender;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+.bookmark-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bookmark-button-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+}

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './results.component.html',
-  styleUrl: './results.component.scss',
+  styleUrl: './results.component.css',
 })
 export class ResultsComponent {
   private bookKeeper = inject(BookKeeperService);

@@ -16,7 +16,7 @@ import { BookmarkComponent } from '../../components/bookmark/bookmark.component'
   standalone: true,
   imports: [ReactiveFormsModule, PaginationComponent, BookmarkComponent],
   templateUrl: './overview.component.html',
-  styleUrl: './overview.component.scss',
+  styleUrl: './overview.component.css',
 })
 export class OverviewComponent {
   private bookKeeper = inject(BookKeeperService);
