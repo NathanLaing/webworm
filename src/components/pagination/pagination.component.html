@@ -1,19 +1,19 @@
 <nav class="pagination">
-    @if (pageNumber() !== 1) {
-        <button (click)="changePage(pageNumber() - 1)">&laquo;</button>
-    }
+  @if (pageNumber() !== 1) {
+    <button (click)="changePage(pageNumber() - 1)">&laquo;</button>
+  }
 
-    @for (page of pageLinks(); track page) {
-        <button
-            class="{{ page === pageNumber() ? 'pagination--active' : '' }}"
-            (click)="changePage(page)"
-            [disabled]="page === pageNumber()"
-        >
-            {{ page }}
-        </button>
-    }
+  @for (page of pageLinks(); track page) {
+    <button
+      class="{{ page === pageNumber() ? 'pagination--active' : '' }}"
+      (click)="changePage(page)"
+      [disabled]="page === pageNumber()"
+    >
+      {{ page }}
+    </button>
+  }
 
-    @if (pageNumber() < lastPage()) {
-        <button (click)="changePage(pageNumber() + 1)">&raquo;</button>
-    }
+  @if (pageNumber() < lastPage()) {
+    <button (click)="changePage(pageNumber() + 1)">&raquo;</button>
+  }
 </nav>

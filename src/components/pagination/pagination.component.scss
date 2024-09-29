@@ -1,22 +1,22 @@
 .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    &--active {
-        background-color: mediumpurple;
-        color: white;
+  &--active {
+    background-color: mediumpurple;
+    color: white;
+  }
+
+  button {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover:not(&--active) {
+      background-color: lavender;
     }
-
-    button {
-        color: black;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-
-        &:hover:not(&--active) {
-            background-color: lavender;
-        }
-    }
+  }
 }

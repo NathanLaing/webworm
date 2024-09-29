@@ -1,37 +1,33 @@
 <div class="bookmark">
-    @if (editing) {
-        <form
-            class="bookmark__form"
-            id="editBookmarkForm"
-            [formGroup]="form"
-            (ngSubmit)="onSubmit()"
-        >
-            <input
-                class="{{ isFormValid() ? 'valid' : 'invalid' }}"
-                type="url"
-                name="url"
-                formControlName="url"
-                [size]="bookmark().url.length + 2"
-            />
-            <button
-                type="submit"
-                form="editBookmarkForm"
-                [disabled]="form.invalid"
-            >
-                <i class="fa fa-check"></i>
-            </button>
-        </form>
-    } @else {
-        <div class="bookmark__item">
-            <a [href]="bookmark().url">{{ bookmark().url }}</a>
-            <span class="bookmark__buttons">
-                <button (click)="editBookmark()">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-                <button (click)="removeBookmark(bookmark().id)">
-                    <i class="fa fa-close"></i>
-                </button>
-            </span>
-        </div>
-    }
+  @if (editing) {
+    <form
+      class="bookmark__form"
+      id="editBookmarkForm"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        class="{{ isFormValid() ? 'valid' : 'invalid' }}"
+        type="url"
+        name="url"
+        formControlName="url"
+        [size]="bookmark().url.length + 2"
+      />
+      <button type="submit" form="editBookmarkForm" [disabled]="form.invalid">
+        <i class="fa fa-check"></i>
+      </button>
+    </form>
+  } @else {
+    <div class="bookmark__item">
+      <a [href]="bookmark().url">{{ bookmark().url }}</a>
+      <span class="bookmark__buttons">
+        <button (click)="editBookmark()">
+          <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+        <button (click)="removeBookmark(bookmark().id)">
+          <i class="fa fa-close"></i>
+        </button>
+      </span>
+    </div>
+  }
 </div>
