@@ -1,4 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { BookKeeperService } from '../../services/book-keeper/book-keeper.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +14,7 @@ import { Router } from '@angular/router';
   imports: [],
   templateUrl: './results.component.html',
   styleUrl: './results.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResultsComponent {
   private readonly bookKeeper = inject(BookKeeperService);

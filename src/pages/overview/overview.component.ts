@@ -1,4 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { BookKeeperService } from '../../services/book-keeper/book-keeper.service';
 import {
   FormControl,
@@ -17,6 +23,7 @@ import { BookmarkComponent } from '../../components/bookmark/bookmark.component'
   imports: [ReactiveFormsModule, PaginationComponent, BookmarkComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent {
   private readonly bookKeeper = inject(BookKeeperService);

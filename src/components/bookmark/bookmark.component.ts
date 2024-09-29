@@ -1,4 +1,10 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  OnInit,
+} from '@angular/core';
 import { BookKeeperService } from '../../services/book-keeper/book-keeper.service';
 import { Bookmark } from '../../models/bookmark.model';
 import {
@@ -15,6 +21,7 @@ import { provideUrlValidator } from '../../validators/url.validator';
   imports: [ReactiveFormsModule],
   templateUrl: './bookmark.component.html',
   styleUrl: './bookmark.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkComponent implements OnInit {
   private readonly bookKeeper = inject(BookKeeperService);

@@ -1,4 +1,10 @@
-import { Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { BookmarkComponent } from '../bookmark/bookmark.component';
 
 @Component({
@@ -7,6 +13,7 @@ import { BookmarkComponent } from '../bookmark/bookmark.component';
   imports: [BookmarkComponent],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
   public readonly totalItems = input.required<number>();
