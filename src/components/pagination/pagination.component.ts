@@ -9,17 +9,17 @@ import { BookmarkComponent } from '../bookmark/bookmark.component';
   styleUrl: './pagination.component.css',
 })
 export class PaginationComponent {
-  public totalItems = input.required<number>();
-  public pageNumber = input.required<number>();
-  public itemsPerPage = input.required<number>();
+  public readonly totalItems = input.required<number>();
+  public readonly pageNumber = input.required<number>();
+  public readonly itemsPerPage = input.required<number>();
 
-  public pageChanged = output<number>();
+  public readonly pageChanged = output<number>();
 
-  public lastPage = computed(() => {
+  public readonly lastPage = computed(() => {
     return Math.ceil(this.totalItems() / this.itemsPerPage());
   });
 
-  public pageLinks = computed(() => {
+  public readonly pageLinks = computed(() => {
     const nextPage = this.pageNumber() + 1;
     const prevPage = this.pageNumber() - 1;
 

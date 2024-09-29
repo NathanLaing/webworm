@@ -17,9 +17,9 @@ import { provideUrlValidator } from '../../validators/url.validator';
   styleUrl: './bookmark.component.css',
 })
 export class BookmarkComponent implements OnInit {
-  private bookKeeper = inject(BookKeeperService);
+  private readonly bookKeeper = inject(BookKeeperService);
 
-  public bookmark = input.required<Bookmark>();
+  public readonly bookmark = input.required<Bookmark>();
 
   public form = new FormGroup({
     url: new FormControl<string>('', {

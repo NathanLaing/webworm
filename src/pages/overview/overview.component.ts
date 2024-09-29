@@ -19,24 +19,30 @@ import { BookmarkComponent } from '../../components/bookmark/bookmark.component'
   styleUrl: './overview.component.css',
 })
 export class OverviewComponent {
-  private bookKeeper = inject(BookKeeperService);
-  private router = inject(Router);
+  private readonly bookKeeper = inject(BookKeeperService);
+  private readonly router = inject(Router);
 
-  public page = input.required<number, string>({
-    transform: (value) => Number.parseInt(value),
+  public readonly page = input.required<number, string>({
+    transform: (value) => {
+      const float = Number(value);
+      if (isNaN(float)) {
+        return 1;
+      }
+      return Math.floor(float);
+    },
   });
 
-  public PAGE_SIZE = 20 as const;
+  public readonly PAGE_SIZE = 20 as const;
 
-  public bookmarks = this.bookKeeper.currentBookmarks();
-  public visibleBookmarks = computed(() => {
+  public readonly bookmarks = this.bookKeeper.currentBookmarks();
+  public readonly visibleBookmarks = computed(() => {
     return this.bookmarks().slice(
       (this.page() - 1) * this.PAGE_SIZE,
       this.page() * this.PAGE_SIZE,
     );
   });
 
-  public form = new FormGroup({
+  public readonly form = new FormGroup({
     url: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, provideUrlValidator()],

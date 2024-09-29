@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
   styleUrl: './results.component.css',
 })
 export class ResultsComponent {
-  private bookKeeper = inject(BookKeeperService);
-  private router = inject(Router);
+  private readonly bookKeeper = inject(BookKeeperService);
+  private readonly router = inject(Router);
 
-  public id = input.required<string>();
+  public readonly id = input.required<string>();
 
-  public bookmark = computed(() => {
+  public readonly bookmark = computed(() => {
     return this.bookKeeper.getFromStorage(this.id());
   });
 

@@ -5,7 +5,7 @@ import { Bookmark } from '../../models/bookmark.model';
   providedIn: 'root',
 })
 export class BookKeeperService {
-  private bookmarks = signal(this.getAllFromStorage());
+  private readonly bookmarks = signal(this.getAllFromStorage());
 
   public currentBookmarks() {
     return this.bookmarks.asReadonly();
@@ -46,14 +46,21 @@ export class BookKeeperService {
     const value = localStorage.getItem(id);
 
     if (value) {
-      return JSON.parse(value) as Bookmark;
+      const parsed = JSON.parse(value);
+
+      if (parsed.id !== undefined && parsed.url !== undefined) {
+        return { id: parsed.id, url: parsed.url };
+      }
     }
+
     return null;
   }
 
   public getAllFromStorage(): Bookmark[] {
     return Object.keys(localStorage)
       .map((key) => this.getFromStorage(key))
-      .filter((bookmark) => !!bookmark);
+      .filter((bookmark) => {
+        return bookmark !== null;
+      });
   }
 }
